@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(cpp-mac-poweruser)
+project(mac-poweruser)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_COMPILER "clang++")
@@ -13,9 +13,12 @@ if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build)
 endif()
 
 # Set the output directories
+set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}) # build final in build/
+
+set(CMAKE_FILES_DIRECTORY ${CMAKE_BINARY_DIR}/CMakeFiles)
 
 # Add the source files
 file(GLOB_RECURSE SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
