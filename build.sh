@@ -1,13 +1,19 @@
 #!/bin/bash
 
-CWD=$(pwd -P)
-SRC=$CWD"/src"
-BUILD=$CWD="/build"
+# check if the parent directory name is "cpp-mac-poweruser"
+if [[ "$(basename $PWD)" != "cpp-mac-poweruser" ]]; then
+  echo "Error: This script should be executed from the cpp-mac-poweruser directory."
+  exit 1
+fi
 
-#clang-format --style=file:$CWD"/.clang-format" -Werror -i src/*.cpp src/*.h
-#find foo/bar/ -iname *.h -o -iname *.cpp | xargs clang-format -i
-find $SRC -iname "*.cpp" -o -iname "*.hpp" -exec clang-format -style=.clang-format -Werror -i {} \;
+find src -iname "*.cpp" -o -iname "*.hpp" -exec clang-format -style=.clang-format -Werror -i {} \;
+
+# configure cmake for the first time
+if [ ! -f "build/CMakeCache.txt" ]; then
+	mkdir -p build
+    cmake -B build -S .
+fi
 
 
-cmake --build $BUILD --target all
+cmake --build build --target all
 
