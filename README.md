@@ -6,6 +6,7 @@ A starter template for my C++ projects.
 * `clang++ -std=c++20`
 * CMake
 * Testing with [Catch2](https://github.com/catchorg/Catch2/tree/devel)
+* clang-format
 * Provided convenience scripts including `build.sh`, `test.sh`.
 
 ## Project File Structure
