@@ -10,6 +10,7 @@ if [ "$CURRENT_DIR" != "$SCRIPT_DIR" ]; then
     exit 1
 fi
 
+# format code according to specified style
 find src -iname "*.cpp" -o -iname "*.hpp" -exec clang-format -style=.clang-format -Werror -i {} \;
 
 # configure cmake for the first time
@@ -18,5 +19,8 @@ if [ ! -f "build/CMakeCache.txt" ]; then
     cmake -B build -S .
 fi
 
-cmake --build build --target all
+# start building with cmake
+cd build
+cmake --build . --target all
+cd ..
 

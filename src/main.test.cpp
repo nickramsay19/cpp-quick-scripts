@@ -1,4 +1,4 @@
-#include <catch2/catch_all.hpp>
+#include <Catch2.hpp>
 
 TEST_CASE("main") {
 	CHECK(true);

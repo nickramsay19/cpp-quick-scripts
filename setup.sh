@@ -30,12 +30,17 @@ fi
 
 if [ ! -d "lib/catch2" ]; then
 	echo "Installing Catch2 into lib/catch2"
-	mkdir -p lib/catch2
+	mkdir -p lib/Catch2
 	git clone https://github.com/catchorg/Catch2.git
 	$PY ./Catch2/tools/scripts/generateAmalgamatedFiles.py
-	mv ./Catch2/extras/catch_amalgamated.hpp ./lib/catch2/catch.hpp
-	mv ./Catch2/extras/catch_amalgamated.cpp ./lib/catch2/catch.cpp
+	mv ./Catch2/extras/catch_amalgamated.hpp ./lib/Catch2/catch_amalgamated.hpp
+	mv ./Catch2/extras/catch_amalgamated.cpp ./lib/Catch2/catch_amalgamated.cpp
 	rm -rf Catch2
+
+	# must generate alias import for #include's to use
+	# otherwise we have to modify the include path in catch_amalgamated.cpp ...
+	# ... and I'd prefer to leave those files untouched for consistency
+	echo "#pragma once\n\n#include <Catch2/catch_amalgamated.hpp>" > lib/Catch2/Catch2.hpp
 else
 	echo "Catch2 already installed."
 fi

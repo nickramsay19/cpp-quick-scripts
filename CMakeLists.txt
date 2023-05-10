@@ -16,26 +16,26 @@ endif()
 set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}) # build final in build/
-
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_FILES_DIRECTORY ${CMAKE_BINARY_DIR}/CMakeFiles)
 
 # --- setup main executable ---
 # add the source files
 file(GLOB_RECURSE SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
-
-# build the executable
+list(FILTER SOURCES EXCLUDE REGEX ".*\\.test\\.cpp$") # must remove test scripts
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-# set the include directories
-target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_SOURCE_DIR}/include")
+target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_SOURCE_DIR}/src/include") # set the include directories
 
 # --- setup testing with Catch2 ---
-find_package(Catch2 3 REQUIRED)
+include_directories(lib)
+include_directories(lib/Catch2)
 
-# find all test source files in the src directory
-file(GLOB_RECURSE TEST_SOURCES "src/*.test.cpp")
+# add the testing library
+enable_testing() # CTest
+add_library(Catch2 lib/Catch2/catch_amalgamated.cpp)
 
-# add a test executable and link it with Catch2
-add_executable(tests ${TEST_SOURCES})
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+# add tests here
+file(GLOB_RECURSE TEST_SOURCES "${PROJECT_SOURCE_DIR}/src/*.test.cpp") # currently adding all .test.cpp files in src into one test
+add_executable(main_test ${TEST_SOURCES})
+target_link_libraries(main_test Catch2)
+add_test(main_test main_test)
