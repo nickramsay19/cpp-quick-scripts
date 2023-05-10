@@ -10,56 +10,25 @@ A starter template for my C++ projects.
 
 ## Project File Structure
 ```
+├── build
+│   ├── CMakeFiles
+│   │   ├── main.dir/
+│   │   └── tests.dir/
+├── lib
+│   └── catch2/
+├── src
+│   ├── include/
+│   ├── main.cpp
+│   └── main.test.cpp
 ├── CMakeLists.txt
 ├── README.md
-├── build
-│   ├── CMakeCache.txt
-│   ├── CMakeFiles
-│   │   ├── 3.23.2
-│   │   │   ├── CMakeCCompiler.cmake
-│   │   │   ├── CMakeCXXCompiler.cmake
-│   │   │   ├── CMakeDetermineCompilerABI_C.bin
-│   │   │   ├── CMakeDetermineCompilerABI_CXX.bin
-│   │   │   ├── CMakeSystem.cmake
-│   │   │   ├── CompilerIdC
-│   │   │   │   ├── CMakeCCompilerId.c
-│   │   │   │   ├── CMakeCCompilerId.o
-│   │   │   │   └── tmp
-│   │   │   └── CompilerIdCXX
-│   │   │       ├── CMakeCXXCompilerId.cpp
-│   │   │       ├── CMakeCXXCompilerId.o
-│   │   │       └── tmp
-│   │   ├── CMakeDirectoryInformation.cmake
-│   │   ├── CMakeError.log
-│   │   ├── CMakeOutput.log
-│   │   ├── CMakeTmp
-│   │   ├── Makefile.cmake
-│   │   ├── Makefile2
-│   │   ├── Progress
-│   │   │   ├── 1
-│   │   │   └── count.txt
-│   │   ├── TargetDirectories.txt
-│   │   ├── cmake.check_cache
-│   │   ├── mac-poweruser.dir
-│   │   │   ├── DependInfo.cmake
-│   │   │   ├── build.make
-│   │   │   ├── cmake_clean.cmake
-│   │   │   ├── compiler_depend.make
-│   │   │   ├── compiler_depend.ts
-│   │   │   ├── depend.make
-│   │   │   ├── flags.make
-│   │   │   ├── link.txt
-│   │   │   ├── progress.make
-│   │   │   └── src
-│   │   │       └── main.cpp.o.d
-│   │   └── progress.marks
-│   ├── Makefile
 ├── build.sh
 ├── clean.sh
-├── src
-│   └── main.cpp
-└── test.sh
+├── test.sh
+├── setup.sh
+└── config.ini
 ```
+
 ## Install Catch2
 
 To install via git:
