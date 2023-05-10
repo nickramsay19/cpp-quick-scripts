@@ -1,4 +1,5 @@
 # cpp-cmake-catch2-project-template
+> Nicholas Ramsay
 
 A starter template for my C++ projects. 
 
@@ -9,25 +10,40 @@ A starter template for my C++ projects.
 * clang-format
 * Provided convenience scripts including `build.sh`, `test.sh`.
 
+## Usage
+All scripts must be run in the project root directory. This has been enforced to mitigate confusion regarding the script's uses, behaviour or side-effects. The behaviour of the scripts are intended to only affect files from the project root.
+
+Run `setup.sh` to setup CMake and install Catch2. Then build with `build.sh`.
+```sh
+sh setup.sh
+sh build.sh
+```
+
+You must have Python3 in order to install Catch2 via the method in `setup.sh`. If you need to specify the python command to use, set the `PY` variable in `config.sh`. 
+
+### Testing
+```
+sh test.sh
+```
+
 ## Project File Structure
 ```
 ├── build
-│   ├── CMakeFiles
-│   │   ├── main.dir/
-│   │   └── tests.dir/
+│   ├── main
+│   └── main_test
 ├── lib
 │   └── catch2/
 ├── src
 │   ├── include/
 │   ├── main.cpp
 │   └── main.test.cpp
-├── CMakeLists.txt
 ├── README.md
+├── CMakeLists.txt
 ├── build.sh
 ├── clean.sh
 ├── test.sh
 ├── setup.sh
-└── config.ini
+└── config.sh
 ```
 
 ## Install Catch2
@@ -39,7 +55,7 @@ cd Catch2
 ```
 
 ### Install locally
-```
+```sh
 python ./tools/scripts/generateAmalgamatedFiles.py
 mv ./extras/catch_amalgamated.hpp ./lib/catch2/catch.hpp
 mv ./extras/catch_amalgamated.cpp ./lib/catch2/catch.cpp
