@@ -11,7 +11,7 @@ if [ "$CURRENT_DIR" != "$SCRIPT_DIR" ]; then
 fi
 
 # get config variables
-source config.ini
+source config.sh
 
 # check that the build directory doesn't exist already
 if [ ! -d "build" ]; then
