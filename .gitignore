@@ -1,0 +1,37 @@
+build/
+bin/
+lib/
+
+# mistakenly undeleted Catch2 install dir 
+Catch2/
+
+# AI generated .gitignore settings:
+# Compiled object files
+*.o
+*.obj
+*.so
+*.dll
+*.a
+
+# Compiled executables
+*.exe
+*.out
+*.app
+
+# Vim editor files
+*.swp
+*.swo
+*.swn
+*.swm
+*.swo
+
+# VSCode editor files
+.vscode/
+*.vscode/
+*.vscodeignore
+
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
