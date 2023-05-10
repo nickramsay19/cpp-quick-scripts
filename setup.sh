@@ -18,6 +18,8 @@ if [ ! -d "build" ]; then
 	# setup the cmake build directory for the first time
 	mkdir build
 	cmake -B build -S .
+else
+	echo "CMake build directory already configured."
 fi
 
 # create lib directory if it doesnt exist
@@ -30,9 +32,12 @@ if [ ! -d "lib/catch2" ]; then
 	echo "Installing Catch2 into lib/catch2"
 	mkdir -p lib/catch2
 	git clone https://github.com/catchorg/Catch2.git
-	cd Catch2
-	$PY ./tools/scripts/generateAmalgamatedFiles.py
-	mv ./extras/catch_amalgamated.hpp ./lib/catch2/catch.hpp
-	mv ./extras/catch_amalgamated.cpp ./lib/catch2/catch.cpp
+	$PY ./Catch2/tools/scripts/generateAmalgamatedFiles.py
+	mv ./Catch2/extras/catch_amalgamated.hpp ./lib/catch2/catch.hpp
+	mv ./Catch2/extras/catch_amalgamated.cpp ./lib/catch2/catch.cpp
 	rm -rf Catch2
+else
+	echo "Catch2 already installed."
 fi
+
+echo "Setup complete."
