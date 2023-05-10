@@ -47,8 +47,8 @@ sh test.sh
 ```
 
 ## Install Catch2
+Catch2 is installed locally into `lib/Catch2` during the setup in `setup.sh`. To do this manually, the procedure is as follows:
 
-To install via git:
 ```sh
 git clone https://github.com/catchorg/Catch2.git
 cd Catch2
@@ -57,8 +57,9 @@ cd Catch2
 ### Install locally
 ```sh
 python ./tools/scripts/generateAmalgamatedFiles.py
-mv ./extras/catch_amalgamated.hpp ./lib/catch2/catch.hpp
-mv ./extras/catch_amalgamated.cpp ./lib/catch2/catch.cpp
+mv ./Catch2/extras/catch_amalgamated.hpp ./lib/Catch2/catch_amalgamated.hpp
+mv ./Catch2/extras/catch_amalgamated.cpp ./lib/Catch2/catch_amalgamated.cpp
+rm -rf Catch2
 ```
 
 ### Install globally
