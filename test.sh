@@ -11,14 +11,14 @@ if [ "$CURRENT_DIR" != "$SCRIPT_DIR" ]; then
 fi
 
 # recursivel run clang-format on every .cpp and .hpp file in src 
-find src -iname "*.cpp" -o -iname "*.hpp" -exec clang-format -style=.clang-format -Werror -i {} \;
-
-# configure cmake for the first time if not already configured
-if [ ! -f "build/CMakeCache.txt" ]; then
-	mkdir -p build
-    cmake -B build -S .
-fi
+# don't make changes, simply output style errors
+find src -iname "*.cpp" -o -iname "*.hpp" -exec clang-format -Werror --dry-run -style=.clang-format {} \;
 
 # build project again
-cmake --build build --target all
+# TODO remove this as default behaviour, move to optional cl arg behaviour
+sh build.sh
+
+# run test
+./build/test_all
+
 
