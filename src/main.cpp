@@ -1,6 +1,7 @@
-#include <iostream>
+#include <vector>
 
 int main() {
-	std::cout << "hey\n";
-	return 0;
+
+    return 0;
 }
+
