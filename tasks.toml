@@ -1,0 +1,50 @@
+[scripts.dock-left]
+aliases = ["dockl"]
+description = "Places the dock on the left side of the screen."
+command = "defaults write com.apple.dock orientation -string left; killall Dock"
+
+[scripts.dock-right]
+aliases = ["dockr"]
+description = "Places the dock on the right side of the screen."
+command = "defaults write com.apple.dock orientation -string right; killall Dock"
+
+[scripts.dock-bottom]
+aliases = ["dbottom"]
+description = "Places the dock on the right side of the screen."
+command = "defaults write com.apple.dock orientation -string bottom; killall Dock"
+
+[scripts.dock-enable-autohide]
+aliases = ["dhide"]
+description = "Enables dock auto hiding."
+command = "defaults write com.apple.dock autohide -boolean true; killall Dock"
+
+[scripts.dock-disable-autohide]
+aliases = ["dshow"]
+description = "Enables dock auto hiding."
+command = "defaults write com.apple.dock autohide -boolean false; killall Dock"
+
+[scripts.dock-disable-autohide-animation]
+aliases = ["dquick"]
+description = "Enable quick dock showing with disabled animations."
+command = "defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -float 0.5; killall Dock"
+
+[scripts.dock-reset]
+aliases = ["dreset"]
+description = "Reset the dock to default i.e. on bottom with autohide disabled."
+command = "defaults delete com.apple.dock; killall Dock"
+
+[scripts.triple-monitor-arrangement]
+aliases = ["scr"]
+description = "Sets my Mac's display settings to have my center monitor as my main display."
+command = "scr"
+# displayplacer "id:B66F7048-2071-2D72-B4FE-1790FC9E5007 origin:(1680,0) res:1680x1050 scaling:off degree:0" "id:F232C936-39BC-8069-A037-9A0CC918F525 origin:(-1440,150) res:1440x900 scaling:off degree:0" "id:66A486D4-FA2E-76C0-93D9-6D25744DC5A0 origin:(0,0) res:1680x1050 scaling:off degree:0"
+
+[scripts.get-new-wallpaper]
+aliases = "nextwp"
+description = "Fetches a new wallpaper and sets it"
+command = "nextwp"
+
+# TODO: multi-monitor wallpapers. Full image must have dims larger than 5760x1080.
+
+
+
