@@ -16,10 +16,23 @@ You must have Python3 in order to install Catch2 via the method in `setup.sh`. I
 sh test.sh
 ```
 
-## Install tomlplusplus
-See the [tomlplusplus GitHub page](https://github.com/marzer/tomlplusplus).
+## Adding Tasks to `tasks.toml`
+```toml
+[script.my_new_script]
+aliases = ["my_new_scr", "an_alias_for_my_new_script", "mns"]
+description = "a helpful description for using my new script"
+command = "sh my_new_script.sh"
+```
 
-Get the header file from: `https://raw.githubusercontent.com/marzer/tomlplusplus/master/toml.hpp`
+Now the script `my_new_script.sh` is ran with `quickscripts my_new_script`, or `quickscripts an_alias_for_my_new_script`, etc. 
+
+Your script's description and its aliases are given when you write `quickscripts` with no arguments, along with a description for all your other scripts. If you only want the description of a particular script simply specify `quickscripts help my_new_script`. Doing so will also print any extra information mentioned a `description_more = "..."` config option (if one is given).
+
+### Optional Script Configuration Options
+* `description_more` - string - An extra block of text to be printed when `quickscripts help <SCRIPT_NAME>` is given the respective script's name.
+
+## Install tomlplusplus
+tomlplusplus is installed automatically when `setup.sh` is ran. Otherwise, you may manually install the [header](https://raw.githubusercontent.com/marzer/tomlplusplus/master/toml.hpp) the instructions below. For more information, see the [tomlplusplus GitHub page](https://github.com/marzer/tomlplusplus).
 
 ## Install Catch2
 Catch2 is installed locally into `lib/Catch2` during the setup in `setup.sh`. To do this manually, the procedure is as follows:

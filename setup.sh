@@ -13,26 +13,19 @@ fi
 # get config variables
 source config.sh
 
-# check that the build directory doesn't exist already
-if [ ! -d "build" ]; then
-	# setup the cmake build directory for the first time
-	mkdir build
-	cmake -B build -S .
-else
-	echo "CMake build directory already configured."
-fi
-
 # create lib directory if it doesnt exist
 if [ ! -d "lib" ]; then
 	echo "Creating lib directory."
 	mkdir lib
 fi
 
+# install Catch2
 if [ ! -d "lib/catch2" ]; then
 	echo "Installing Catch2 into lib/catch2"
 	mkdir -p lib/Catch2
 	git clone https://github.com/catchorg/Catch2.git
 	$PY ./Catch2/tools/scripts/generateAmalgamatedFiles.py
+    ls ./Catch2/extras/
 	mv ./Catch2/extras/catch_amalgamated.hpp ./lib/Catch2/catch_amalgamated.hpp
 	mv ./Catch2/extras/catch_amalgamated.cpp ./lib/Catch2/catch_amalgamated.cpp
 	rm -rf Catch2
@@ -47,8 +40,19 @@ fi
 
 # install tomlplusplus
 if [ ! -f "lib/toml.hpp" ]; then
+    echo "Installing tomlplusplus."
     mkdir -p lib/tomlplusplus
     curl https://raw.githubusercontent.com/marzer/tomlplusplus/master/toml.hpp > lib/tomlplusplus/toml.hpp
+fi
+
+# setup CMake
+# check that the build directory doesn't exist already
+if [ ! -d "build" ]; then
+	# setup the cmake build directory for the first time
+	mkdir build
+	cmake -B build -S .
+else
+	echo "CMake build directory has already been configured."
 fi
 
 echo "Setup complete."
