@@ -44,3 +44,13 @@ cmake -Bbuild -H. -DBUILD_TESTING=OFF
 sudo cmake --build build/ --target install
 ```
 
+## This Project's [C++ Template](https://github.com/nickramsay19/cpp-cmake-catch2-project-template) Info
+This project is built from my [C++ CMake Template](https://github.com/nickramsay19/cpp-cmake-catch2-project-template). To update the repository for when my template is updated, we must have a dedicated remote:
+```sh
+git remote add template git@github.com:nickramsay19/cpp-cmake-catch2-project-template.git
+```
+And to pull any updates, we do:
+```sh
+git fetch --all
+git merge template/main --allow-unrelated-histories
+```
