@@ -1,18 +1,8 @@
-# cpp-cmake-catch2-project-template
+# cpp-quick-scripts 
 > Nicholas Ramsay
 
 A starter template for my C++ projects. 
-
-## Details & Features 
-* `clang++ -std=c++20`
-* CMake
-* Testing with [Catch2](https://github.com/catchorg/Catch2/tree/devel)
-* clang-format
-* Provided convenience scripts including `build.sh`, `test.sh`.
-
 ## Usage
-All scripts must be run in the project root directory. This has been enforced to mitigate confusion regarding the script's uses, behaviour or side-effects. The behaviour of the scripts are intended to only affect files from the project root.
-
 Run `setup.sh` to setup CMake and install Catch2. Then build with `build.sh`.
 ```sh
 sh setup.sh
@@ -26,25 +16,10 @@ You must have Python3 in order to install Catch2 via the method in `setup.sh`. I
 sh test.sh
 ```
 
-## Project File Structure
-```
-├── build
-│   ├── main
-│   └── main_test
-├── lib
-│   └── catch2/
-├── src
-│   ├── include/
-│   ├── main.cpp
-│   └── main.test.cpp
-├── README.md
-├── CMakeLists.txt
-├── build.sh
-├── clean.sh
-├── test.sh
-├── setup.sh
-└── config.sh
-```
+## Install tomlplusplus
+See the [tomlplusplus GitHub page](https://github.com/marzer/tomlplusplus).
+
+Get the header file from: `https://raw.githubusercontent.com/marzer/tomlplusplus/master/toml.hpp`
 
 ## Install Catch2
 Catch2 is installed locally into `lib/Catch2` during the setup in `setup.sh`. To do this manually, the procedure is as follows:
