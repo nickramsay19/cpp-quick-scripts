@@ -21,13 +21,14 @@ set(CMAKE_FILES_DIRECTORY ${CMAKE_BINARY_DIR}/CMakeFiles)
 
 # --- setup main executable ---
 # add the source files
+include_directories(lib lib/tomlplusplus)
+include_directories(lib/tomlplusplus)
 file(GLOB_RECURSE SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 list(FILTER SOURCES EXCLUDE REGEX ".*\\.test\\.cpp$") # must remove test scripts
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_SOURCE_DIR}/src/include") # set the include directories
 
 # --- setup testing with Catch2 ---
-include_directories(lib)
 include_directories(lib/Catch2)
 
 # add the testing library
