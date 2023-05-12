@@ -45,4 +45,10 @@ else
 	echo "Catch2 already installed."
 fi
 
+# install tomlplusplus
+if [ ! -f "lib/toml.hpp" ]; then
+    mkdir -p lib/tomlplusplus
+    curl https://raw.githubusercontent.com/marzer/tomlplusplus/master/toml.hpp > lib/tomlplusplus/toml.hpp
+fi
+
 echo "Setup complete."
